@@ -65,7 +65,7 @@ open mochawesome-report/*.html   # (or start/xdg-open on Windows/Linux)
 
 Here’s an example of the generated Mochawesome HTML report:
 
-![Example Report](./screenshot-report.png)
+![Example Report](./screenshot-report.jpg)
 
 ---
 
