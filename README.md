@@ -1,49 +1,88 @@
-# Cypress Accessibility Starter (Cypress + axe-core + CI)
+# Cypress Accessibility Starter
 
-This repo demonstrates modern UI test automation with **Cypress** and automated **accessibility auditing** via **axe-core**. It includes test tagging, CI with GitHub Actions, and visual HTML reports.
+![CI](https://github.com/Mittal237/cypress-a11y-starter/actions/workflows/ci.yml/badge.svg)
 
-## Quick Start
+A sample Cypress automation framework demonstrating:
 
-```bash
-npm ci
-npm test
-npm run report  # build Mochawesome HTML report
+- ✅ End-to-end UI testing with **Cypress**
+- ✅ Smoke & regression flows on [SauceDemo](https://www.saucedemo.com)
+- ✅ Accessibility auditing with **axe-core** (`cypress-axe`)
+- ✅ CI/CD integration with **GitHub Actions** (Chrome headless)
+- ✅ Professional **Mochawesome HTML reports**
+
+---
+
+## 📂 Folder Structure
 ```
-
-### Key features
-- Cypress E2E tests (smoke + happy path)
-- Accessibility audits (critical/serious) with `cypress-axe`
-- CI via GitHub Actions (Chrome headless)
-- Mochawesome HTML reports as CI artifacts
-- Easy to extend: add specs under `cypress/e2e/*`
-
-## Scripts
-- `npm test` — headless run (Chrome)
-- `npm run report` — merge JSON + generate HTML report in `mochawesome-report/`
-- `npm run test:smoke` / `npm run test:a11y` — run tagged subsets
-
-## Folder structure
-```
-.
-├─ .github/workflows/ci.yml
-├─ cypress/
-│  ├─ e2e/
-│  │  ├─ a11y/saucedemo.a11y.cy.js
-│  │  └─ smoke/saucedemo.login.cy.js
-│  ├─ fixtures/users.json
-│  └─ support/{commands.js,e2e.js}
-├─ cypress.config.js
-├─ package.json
-└─ README.md
-```
-
-## CI status badge
-Add this to the top of the README after pushing to GitHub:
-
-```
-![CI](https://github.com/<your-username>/<your-repo>/actions/workflows/ci.yml/badge.svg)
+.github/workflows/ci.yml    # GitHub Actions workflow
+cypress/
+ ├─ e2e/
+ │   ├─ a11y/               # Accessibility tests
+ │   │   └─ saucedemo.a11y.cy.js
+ │   └─ smoke/              # Smoke tests
+ │       └─ saucedemo.login.cy.js
+ ├─ fixtures/users.json     # Test data (valid/locked users)
+ └─ support/                # Custom commands + setup
+cypress.config.js           # Cypress + reporter config
+package.json                # Dependencies + npm scripts
 ```
 
 ---
 
-> Target site is **SauceDemo**. To point to a different app, update `baseUrl` in `cypress.config.js` and adjust selectors in the specs.
+## 🚀 How to Run Locally
+
+Clone the repo and install dependencies:
+```bash
+git clone https://github.com/Mittal237/cypress-a11y-starter.git
+cd cypress-a11y-starter
+npm install
+```
+
+Run all tests headless (CI style):
+```bash
+npm test
+```
+
+Run only smoke tests:
+```bash
+npm run test:smoke
+```
+
+Run only accessibility tests:
+```bash
+npm run test:a11y
+```
+
+Generate and open Mochawesome HTML report:
+```bash
+npm run report
+open mochawesome-report/*.html   # (or start/xdg-open on Windows/Linux)
+```
+
+---
+
+## 📊 Example Report
+
+Here’s an example of the generated Mochawesome HTML report:
+
+![Example Report](./screenshot-report.png)
+
+---
+
+## ⚙️ CI/CD
+
+This project is fully integrated with **GitHub Actions**.  
+- Every push or pull request to `main` triggers the pipeline.  
+- Tests run headless in Chrome.  
+- Reports are uploaded as CI artifacts.  
+
+---
+
+## 🎯 Highlights
+
+- Uses **Page Object patterns**, fixtures, and custom commands for maintainability.  
+- Includes **accessibility checks** for critical/serious WCAG violations.  
+- Produces clean **HTML test reports** for easy sharing.  
+- Ready for **CI/CD pipelines**, showing continuous automated testing in action.  
+
+---
