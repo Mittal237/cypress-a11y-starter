@@ -1,0 +1,21 @@
+{
+  "name": "cypress-accessibility-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "cypress run --browser chrome --headless",
+    "test:smoke": "cypress run --spec 'cypress/e2e/smoke/**/*.cy.js'",
+    "test:a11y": "cypress run --spec 'cypress/e2e/a11y/**/*.cy.js'",
+    "report:merge": "mochawesome-merge ./mochawesome-report/*.json > ./mochawesome-report/merged-output.json",
+    "report:generate": "marge ./mochawesome-report/merged-output.json --reportDir ./mochawesome-report --inline",
+    "report": "npm run report:merge && npm run report:generate"
+  },
+  "devDependencies": {
+    "axe-core": "^4.9.0",
+    "cypress": "^13.7.0",
+    "cypress-axe": "^1.5.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.2",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}
