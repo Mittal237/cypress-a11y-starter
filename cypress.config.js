@@ -5,7 +5,11 @@ module.exports = defineConfig({
     baseUrl: 'https://www.saucedemo.com',
     specPattern: 'cypress/e2e/**/*.cy.js',
     supportFile: 'cypress/support/e2e.js',
-    video: false
+    video: false,
+    pageLoadTimeout: 120000,       
+    defaultCommandTimeout: 15000,
+    chromeWebSecurity: false,
+    experimentalSessionAndOrigin: true
   },
   reporter: 'mochawesome',
   reporterOptions: {
