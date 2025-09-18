@@ -76,8 +76,6 @@ This project is fully integrated with **GitHub Actions**.
 - Tests run headless in Chrome.  
 - Reports are uploaded as CI artifacts.  
 
----
-
 ## 🎯 Highlights
 
 - Uses **Page Object patterns**, fixtures, and custom commands for maintainability.  
