@@ -21,18 +21,29 @@ jobs:
           cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        # use 'npm ci' if package-lock.json is committed; otherwise use 'npm install'
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
-      - name: Cypress run (Chrome headless)
+      - name: Run Cypress (Chrome headless)
         uses: cypress-io/github-action@v6
         with:
-          command: npm test
+          command: npm test               # runs Cypress headless (Chrome)
           browser: chrome
-          install: false
+          install: false                   # we already installed deps above
 
-      - name: Upload Mochawesome report
+      - name: Generate Mochawesome HTML report
+        if: always()                       # run even if tests fail so you get a report
+        run: npm run report
+
+      - name: Upload Mochawesome report artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: mochawesome-report
+          if-no-files-found: warn
